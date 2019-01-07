@@ -1,15 +1,24 @@
 import time
+import gui
+
 from selenium import webdriver
+print("dontkno")
 d=time.localtime()
 hour1=d.tm_hour
 min1=d.tm_min
-in_hr=int(input("enter alarm set in  hr(24)\n"))
-in_min=int(input('enter min(60):\n'))
-print(in_min-min1)
+try:
+    gui.guiutility()
+    print("ÿou were her")
+except:
+    print("fdg")
+gui.guiutility()
+in_hr=int(gui.ask_hr())
+in_min=int(gui.ask_min())
 if hour1 > in_hr:
     print("ït will ring tomorrow")
 else:
-    set_alarm_ringtone = input("set your alarm ringtone")
+    gui.alarm_utility()
+    set_alarm_ringtone = gui.set_Alarm()
     delay =(in_hr-hour1)*60
     delay2=in_min-min1
     delay=delay + delay2
@@ -22,6 +31,3 @@ driver = webdriver.Firefox()
 
 driver.get("https://www.youtube.com/results?search_query="+set_alarm_ringtone)
 driver.find_element_by_id("video-title").click()
-
-
-
