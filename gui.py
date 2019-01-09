@@ -9,8 +9,11 @@ def calc_delay(hr,min):
     hr1=local_time.tm_hour
     min1=local_time.tm_min
     delay=hr-hr1
-    if delay<0:
-        print("sorry")
+    if delay < 0:
+        print(" WIll ring tomorrow")
+        delay=hr-hr1+24
+        delay2=min-min1
+        delay=delay*60
     else:
         delay2=min-min1
         delay=delay+delay2
@@ -38,7 +41,8 @@ def message1():
        in_hr=in_hr
    else:
        in_hr=in_hr+12
-       delay1=calc_delay(in_hr,in_min)
+
+   delay1 = calc_delay(in_hr, in_min)
    message=messagebox.showinfo("alarm set","Your alarm will ring in "+ str(delay1)+"sec")
    time.sleep(delay1)
    alarm(in_alarm)
